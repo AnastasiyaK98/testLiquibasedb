@@ -74,6 +74,6 @@ jobs:
             changeLogFile: 'changelog.postgree.sql'
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
-            url: ${{ secrets.URL }}
+            url: jdbc:postgresql://localhost:5432/test
             
             
