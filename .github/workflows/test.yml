@@ -70,7 +70,7 @@ jobs:
         - uses: liquibase/liquibase-github-action@v7
           with:
             operation: 'update'
-            classpath: '/src/main/resources/changelogs/'
+            classpath: 'src/main/resources/changelogs/'
             changeLogFile: 'changelog.postgree.sql'
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
