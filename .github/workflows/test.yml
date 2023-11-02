@@ -13,32 +13,7 @@ on:
       licenseKey: # string
        description: 'Liquibase license key used to unlock paid capabilities'
        required: false
-      env:
-        description: 'Environment name'
-        required: true
-        default: 'dev'
-        type: choice
-        options:
-        - dev
-        - stage
-        - prod
-      dbHost:
-        type: string
-        description: 'Database host address'
-        required: true
-        default: 'localhost'
-      dbPort:
-        type: string
-        description: 'Database host port number, i.e. MySQL 3306, PostgreSQL 5432'
-        required: true
-      dbType:
-        description: 'Database type (MySQL/PostgreSQL)'
-        required: true
-        default: 'postgresql'
-        type: choice
-        options:
-        - postgresql
-        - mysql
+  
 permissions:
   contents: write
 jobs:
