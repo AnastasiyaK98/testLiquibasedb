@@ -1,0 +1,79 @@
+name: Flyway Migrations
+
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      proLicenseKey: # string
+       description: 'DEPRECATED: Liquibase Pro license key used to unlock paid capabilities'
+       required: false
+      hubApiKey: # string
+       description: 'Liquibase Hub API key for operations'
+       required: false
+      licenseKey: # string
+       description: 'Liquibase license key used to unlock paid capabilities'
+       required: false
+      env:
+        description: 'Environment name'
+        required: true
+        default: 'dev'
+        type: choice
+        options:
+        - dev
+        - stage
+        - prod
+      dbHost:
+        type: string
+        description: 'Database host address'
+        required: true
+        default: 'localhost'
+      dbPort:
+        type: string
+        description: 'Database host port number, i.e. MySQL 3306, PostgreSQL 5432'
+        required: true
+      dbType:
+        description: 'Database type (MySQL/PostgreSQL)'
+        required: true
+        default: 'postgresql'
+        type: choice
+        options:
+        - postgresql
+        - mysql
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      postgres:
+        # Docker Hub image
+        image: postgres
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER:  ${{ secrets.USERNAME}}
+          POSTGRES_PASSWORD: ${{ secrets.PASSWORD}}
+          POSTGRES_DB: test
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
+    steps:
+        - uses: actions/checkout@v2
+        - uses: liquibase/liquibase-github-action@v7
+          with:
+            operation: 'update'
+            classpath: '/src/main/resources/changelogs/'
+            changeLogFile: 'changelog.postgree.sql'
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASSWORD }}
+            url: ${{ secrets.URL }}
+            
+            
