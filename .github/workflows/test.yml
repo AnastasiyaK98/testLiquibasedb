@@ -42,7 +42,7 @@ jobs:
             changeLogFile: 'changelog.postgree.sql'
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
-            driver: liquibase.ext.hibernate.database.connection.HibernateDriver
+            #driver: liquibase.ext.hibernate.database.connection.HibernateDriver
          
             url: jdbc:postgresql://localhost:5432/test
         - uses: liquibase-github-actions/generate-changelog@v4.24.0
