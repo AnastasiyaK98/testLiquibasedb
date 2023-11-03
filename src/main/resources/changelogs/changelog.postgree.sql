@@ -1,4 +1,11 @@
-create table PUBLIC.person (
-                               ID int not null,
-                               NAME varchar(100) not null
-);
+--liquibase formatted sql
+
+--changeset your.name:1
+--rollback DROP TABLE person;
+create table person (
+    id int primary key,
+    name varchar(50) not null,
+    address1 varchar(50),
+    address2 varchar(50),
+    city varchar(30)
+)
