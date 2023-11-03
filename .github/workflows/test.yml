@@ -22,9 +22,7 @@ jobs:
           POSTGRES_USER:  ${{ secrets.USERNAME}}
           POSTGRES_PASSWORD: ${{ secrets.PASSWORD}}
           POSTGRES_DB: test
-          POSTGRES_HOST: localhost
-          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} #
-          DB_NAME: test
+   
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -35,9 +33,14 @@ jobs:
           # Maps tcp port 5432 on service container to the host
           - 5432/tcp
     steps:
+         
         - uses: actions/checkout@v2
         - uses: liquibase-github-actions/update@v4.24.0
           with:
+          
+            POSTGRES_HOST: localhost
+            POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} #
+            DB_NAME: test
             classpath: 'src/main/resources/changelogs/'
             changeLogFile: 'changelog.postgree.sql'
             username: ${{ secrets.USERNAME }}
