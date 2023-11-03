@@ -1,18 +1,9 @@
-name: Flyway Migrations
+name: Liquibase Migrations
 
 on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-    inputs:
-      proLicenseKey: # string
-       description: 'DEPRECATED: Liquibase Pro license key used to unlock paid capabilities'
-       required: false
-      hubApiKey: # string
-       description: 'Liquibase Hub API key for operations'
-       required: false
-      licenseKey: # string
-       description: 'Liquibase license key used to unlock paid capabilities'
-       required: false
+
   
 permissions:
   contents: write
