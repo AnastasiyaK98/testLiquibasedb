@@ -43,7 +43,7 @@ jobs:
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
             #driver: liquibase.ext.hibernate.database.connection.HibernateDriver
-            url: "jdbc:postgresql://localhost:5432/test"
+            url: 'jdbc:postgresql://127.0.0.1:5432/test'
         - uses: liquibase-github-actions/generate-changelog@v4.24.0
           with:
             url: jdbc:postgresql://${{env.POSTGRES_HOST}}:${{env.POSTGRES_PORT}}/${{env. DB_NAME}}
