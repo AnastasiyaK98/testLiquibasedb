@@ -37,10 +37,7 @@ jobs:
         - uses: actions/checkout@v2
         - uses: liquibase-github-actions/update@v4.24.0
           with:
-          
-            POSTGRES_HOST: localhost
-            POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} #
-            DB_NAME: test
+                  
             classpath: 'src/main/resources/changelogs/'
             changeLogFile: 'changelog.postgree.sql'
             username: ${{ secrets.USERNAME }}
