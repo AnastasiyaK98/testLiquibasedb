@@ -22,6 +22,8 @@ jobs:
           POSTGRES_USER:  ${{ secrets.USERNAME}}
           POSTGRES_PASSWORD: ${{ secrets.PASSWORD}}
           POSTGRES_DB: test
+          POSTGRES_HOST: localhost
+          POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} #
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -39,10 +41,10 @@ jobs:
             changeLogFile: 'changelog.postgree.sql'
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
-            url: jdbc:postgresql://localhost:5432/test
+            url: jdbc:postgresql://POSTGRES_HOST:POSTGRES_PORT/test
         - uses: liquibase-github-actions/generate-changelog@v4.24.0
           with:
-            url: jdbc:postgresql://localhost:5432/test
+            url: jdbc:postgresql://POSTGRES_HOST:POSTGRES_PORT/test
             headless: true          
             logLevel: INFO
             
