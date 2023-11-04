@@ -6,27 +6,17 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   LBJobDockerCLI:
-    runs-on: ubuntu-latest
-    services:
-      # Label used to access the service container
-      postgres:
-        # Docker Hub image
-        image: postgres:latest
-        # Provide the password for postgres
-        env:
-          POSTGRES_USER:  pd
-          POSTGRES_PASSWORD: ${{ secrets.PASSWORD}}
-          POSTGRES_DB: test3
-        # Set health checks to wait until postgres has started
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          # Maps tcp port 5432 on service container to the host
-          - 5432:5432
+    runs-on: windows-latest
+
     steps: 
     - uses: actions/checkout@v2
+    - name: Run 'Liquibase status' in a Docker Container	    
+      uses: docker://liquibase/liquibase:latest
+      with:
+        args: --url="jdbc:postgresql://localhost:5432/test" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 status --verbose
     
+    - name: Run 'Liquibase update' in a Docker Container
+      uses: docker://liquibase/liquibase:latest
+      with:
+        args: --url="jdbc:postgresql://localhost:5432/test" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
  
