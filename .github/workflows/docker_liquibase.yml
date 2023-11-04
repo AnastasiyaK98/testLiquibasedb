@@ -1,0 +1,21 @@
+name: Liquibase_Docker_GitHub-Hosted
+
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  LBJobDockerCLI:
+    runs-on: ubuntu-latest
+    steps: 
+    - uses: actions/checkout@v2
+    
+    - name: Run 'Liquibase status' in a Docker Container	    
+      uses: docker://liquibase/liquibase:latest
+      with:
+        args: --url="jdbc:postgresql://localhost:5432/test" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 status --verbose
+    
+    - name: Run 'Liquibase update' in a Docker Container
+      uses: docker://liquibase/liquibase:latest
+      with:
+        args: --url="jdbc:postgresql://localhost:5432/test" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
