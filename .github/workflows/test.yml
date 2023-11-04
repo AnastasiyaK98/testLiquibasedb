@@ -64,7 +64,7 @@ jobs:
             #logLevel: INFO
         - name: where are the files?
           run: |
-            find "public.databasechangelog*"
+            find -name "public.databasechangelog*"
             ls 
            # - name: file
             #run: |
