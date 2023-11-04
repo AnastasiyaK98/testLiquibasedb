@@ -51,7 +51,8 @@ jobs:
             logLevel: INFO
         - name: where are the files?
           run: |
-            find /usr/ -name "dbchangelog*"
+            ls /usr/bin/
+            ls /home/runner/work/
            # - name: file
             #run: |
        # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
