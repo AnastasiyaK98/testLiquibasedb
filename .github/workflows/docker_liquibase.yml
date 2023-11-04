@@ -14,7 +14,7 @@ jobs:
         image: postgres:latest
         # Provide the password for postgres
         env:
-          POSTGRES_USER:  ${{ secrets.USERNAME}}
+          POSTGRES_USER:  pd
           POSTGRES_PASSWORD: ${{ secrets.PASSWORD}}
           POSTGRES_DB: test
         # Set health checks to wait until postgres has started
@@ -29,12 +29,4 @@ jobs:
     steps: 
     - uses: actions/checkout@v2
     
-    - name: Run 'Liquibase status' in a Docker Container	    
-      uses: docker://liquibase/liquibase:latest
-      with:
-        args: --url="jdbc:postgresql://postgres:5432/test" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 status --verbose
-    
-    - name: Run 'Liquibase update' in a Docker Container
-      uses: docker://liquibase/liquibase:latest
-      with:
-        args: --url="jdbc:postgresql://postgres:5432/test" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
+ 
