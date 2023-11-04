@@ -42,6 +42,8 @@ jobs:
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
             url: "jdbc:postgresql://postgres:5432/test"
+            logLevel: INFO
+            logFile: "src/main/resources/changelogs/liquibase.log"
         #- uses: liquibase-github-actions/generate-changelog@v4.24.0
           #with:
             #username: ${{ secrets.USERNAME }}
