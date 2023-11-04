@@ -49,6 +49,9 @@ jobs:
             url: "jdbc:postgresql://postgres:5432/test"
             headless: true          
             logLevel: INFO
+        - name: where are the files?
+          run: |
+            ls
            # - name: file
             #run: |
        # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
