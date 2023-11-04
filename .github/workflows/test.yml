@@ -65,7 +65,7 @@ jobs:
         - name: where are the files?
           run: |
            
-            ls /home/runner/work/_actions/liquibase-github-actions/update/
+            ls /home/runner/work/_actions/liquibase-github-actions/update/v4.24.0/
            # - name: file
             #run: |
        # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
