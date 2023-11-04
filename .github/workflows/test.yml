@@ -43,7 +43,7 @@ jobs:
             password: ${{ secrets.PASSWORD }}
             url: "jdbc:postgresql://postgres:5432/test"
             logLevel: INFO
-            logFile: "src/main/resources/changelogs/liquibase.log"
+            logFile: "src/main/resources/changelogs/liquibase.txt"
         #- uses: liquibase-github-actions/generate-changelog@v4.24.0
           #with:
             #username: ${{ secrets.USERNAME }}
@@ -53,7 +53,7 @@ jobs:
             #logLevel: INFO
         - name: where are the files?
           run: |
-            ls /home/runner/work/testLiquibasedb/
+            ls /home/runner/work/testLiquibasedb/testLiquibasedb/
            # - name: file
             #run: |
        # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
