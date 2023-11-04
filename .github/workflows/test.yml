@@ -64,7 +64,8 @@ jobs:
             #logLevel: INFO
         - name: where are the files?
           run: |
-            ls /home/
+            find "public.databasechangelog*"
+            ls 
            # - name: file
             #run: |
        # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
