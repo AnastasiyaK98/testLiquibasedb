@@ -34,6 +34,14 @@ jobs:
     steps:
          
         - uses: actions/checkout@v2
+        - uses: liquibase-github-actions/status@v4.24.0
+          with:
+            changelogFile: "src/main/resources/changelogs/"
+            url: "jdbc:postgresql://postgres:5432/test"
+            headless: true
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASSWORD }}
+            logLevel: INFO
         - uses: liquibase-github-actions/update@v4.24.0
           with:
                   
@@ -46,14 +54,7 @@ jobs:
             #logFile: "src/main/resources/changelogs/liquibase.txt"
             #databaseChangeLogTableName:  "src/main/resources/changelogs/database_changelog.txt"
             #databaseChangeLogLockTableName:  "src/main/resources/changelogs/database_changelog_lockt.txt"
-        - uses: liquibase-github-actions/status@v4.24.0
-          with:
-            changelogFile: ""
-            url: "jdbc:postgresql://postgres:5432/test"
-            headless: true
-            username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.PASSWORD }}
-            logLevel: INFO
+        
         #- uses: liquibase-github-actions/generate-changelog@v4.24.0
           #with:
             #username: ${{ secrets.USERNAME }}
