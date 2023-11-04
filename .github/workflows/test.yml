@@ -43,9 +43,17 @@ jobs:
             password: ${{ secrets.PASSWORD }}
             url: "jdbc:postgresql://postgres:5432/test"
             logLevel: INFO
-            logFile: "src/main/resources/changelogs/liquibase.txt"
-            databaseChangeLogTableName:  "src/main/resources/changelogs/database_changelog.txt"
-            databaseChangeLogLockTableName:  "src/main/resources/changelogs/database_changelog_lockt.txt"
+            #logFile: "src/main/resources/changelogs/liquibase.txt"
+            #databaseChangeLogTableName:  "src/main/resources/changelogs/database_changelog.txt"
+            #databaseChangeLogLockTableName:  "src/main/resources/changelogs/database_changelog_lockt.txt"
+        - uses: liquibase-github-actions/status@v4.24.0
+          with:
+            changelogFile: ""
+            url: "jdbc:postgresql://postgres:5432/test"
+            headless: true
+            username: ${{ secrets.USERNAME }}
+            password: ${{ secrets.PASSWORD }}
+            logLevel: INFO
         #- uses: liquibase-github-actions/generate-changelog@v4.24.0
           #with:
             #username: ${{ secrets.USERNAME }}
@@ -55,7 +63,7 @@ jobs:
             #logLevel: INFO
         - name: where are the files?
           run: |
-            ls /home/runner/work/testLiquibasedb/testLiquibasedb/src/
+            ls /home/runner/work/testLiquibasedb/testLiquibasedb/src/main/
            # - name: file
             #run: |
        # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
