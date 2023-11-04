@@ -53,7 +53,7 @@ jobs:
             #logLevel: INFO
         - name: where are the files?
           run: |
-            ls /home/runner/work/
+            ls /home/runner/work/testLiquibasedb/
            # - name: file
             #run: |
        # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
