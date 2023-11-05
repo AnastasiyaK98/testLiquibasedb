@@ -49,7 +49,7 @@ jobs:
             changeLogFile: "changelog.postgree.sql"
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
-            url: "jdbc:postgresql://host.docker.internal:5432/test"
+            url: "jdbc:postgresql://host.docker.internal:localhost:5432/test"
             logLevel: INFO
             #logFile: "src/main/resources/changelogs/liquibase.txt"
             #databaseChangeLogTableName:  "src/main/resources/changelogs/database_changelog.txt"
@@ -59,7 +59,7 @@ jobs:
           #with:
             #username: ${{ secrets.USERNAME }}
             #password: ${{ secrets.PASSWORD }}
-            #url: "jdbc:postgresql://host.docker.internal:5432/test"
+            #url: "jdbc:postgresql://host.docker.internal:localhost:5432/test"
             #headless: true          
             #logLevel: INFO
         - name: where are the files?
