@@ -13,6 +13,6 @@ jobs:
     
     - uses: docker://liquibase/liquibase:latest
       with:
-        args:  --url="jdbc:postgresql://host.docker.internal:5432/test?currentSchema=public" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
-        run: docker run -d --add-host host.docker.internal:host-gateway //liquibase/liquibase:latest
+        args:  --url="jdbc:postgresql://host:5432/test?currentSchema=public" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
+        run: docker run --network host //liquibase/liquibase:latest
        
