@@ -65,7 +65,8 @@ jobs:
             #url: "jdbc:postgresql://postgres:5432/test"
             #headless: true          
             #logLevel: INFO
-        
+
+       
         - name: where are the files?
           run: |
             psql -h localhost -d test2 -U postgres -c "SELECT * FROM databasechangelog" > ./src/main/resources/changelogs/databasechangelog.txt
