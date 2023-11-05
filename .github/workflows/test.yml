@@ -68,7 +68,7 @@ jobs:
         
         - name: where are the files?
           run: |
-            psql -h localhost -d test2 -U postgres -c "SELECT * FROM databasechangelog" > ./src/main/resources/changelogs/databasechangelog.txt
+            psql -h localhost -d test2 -U postgres -c "SELECT * FROM databasechangelog" > src/main/resources/changelogs/databasechangelog.txt
  
           env:
           # postgress password is required; alternatively, you can run:
