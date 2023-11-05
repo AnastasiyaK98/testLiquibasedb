@@ -65,13 +65,10 @@ jobs:
             #url: "jdbc:postgresql://postgres:5432/test"
             #headless: true          
             #logLevel: INFO
-        - name: Install PostgreSQL client
-          run: |
-           apt-get update
-           apt-get install --yes postgresql-client
+        
         - name: where are the files?
           run: |
-            psql -h postgres -d test -U postgres -c 'SELECT 1;'     
+            psql -h localhost -d test -U postgres -c 'SELECT 1;'     
           env:
           # postgress password is required; alternatively, you can run:
           # `PGPASSWORD=postgres_password psql ...`
