@@ -68,7 +68,7 @@ jobs:
         
         - name: where are the files?
           run: |
-            psql -h localhost -d test -U postgres -c 'SELECT * from test;'     
+            psql -h localhost -d test -U postgres -c 'SELECT * from person;'     
           env:
           # postgress password is required; alternatively, you can run:
           # `PGPASSWORD=postgres_password psql ...`
