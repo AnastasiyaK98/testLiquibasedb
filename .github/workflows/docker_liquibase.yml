@@ -10,11 +10,13 @@ jobs:
  
     steps: 
     - uses: actions/checkout@v2
+    - name: docker
+      run: docker run --add-host=host.docker.internal:127.0.0.1
     - name: Run 'Liquibase status' in a Docker Container	    
       uses: docker://liquibase/liquibase:latest
       with:
         args:  --url="jdbc:postgresql://host.docker.internal:5432/test?currentSchema=public" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 status --verbose
-    
+     
     - name: Run 'Liquibase update' in a Docker Container
       uses: docker://liquibase/liquibase:latest
       with:
