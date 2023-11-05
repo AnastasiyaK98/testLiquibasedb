@@ -9,7 +9,7 @@ create table person (
     address2 varchar(50),
     city varchar(30)
 )
---changeset your.name:1
+--changeset your.name:2
 --rollback DELETE FROM person WHERE name='Sofa';
 INSERT INTO person (id, name, address1, address2, city) VALUES (1, 'Sofa', 'Чусовой 4', 'Пермь', 'Киров');
 
