@@ -15,7 +15,7 @@ jobs:
     - name: Run 'Liquibase status' in a Docker Container	    
       uses: docker://liquibase/liquibase:latest
       with:
-        args:  --url="jdbc:postgresql://docker.for.win.localhost:5432/test?currentSchema=public" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 status --verbose
+        args:  --url="jdbc:postgresql://http://localhost:5432/test?currentSchema=public" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 status --verbose
      
     - name: Run 'Liquibase update' in a Docker Container
       uses: docker://liquibase/liquibase:latest
