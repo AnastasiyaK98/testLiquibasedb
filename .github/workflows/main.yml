@@ -12,5 +12,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - uses: docker://liquibase/liquibase:latest
-    - name: jkkk
-      run: docker run --rm --net="host" --url="jdbc:postgresql://host.docker.internal:5432/test?currentSchema=public" --changeLogFile=/src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 status --verbose
+      with:
+        args:  --url="jdbc:postgresql://host.docker.internal:5432/test?currentSchema=public" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
+        run: docker run -d --add-host host.docker.internal:host-gateway //liquibase/liquibase:latest
+       
