@@ -68,12 +68,17 @@ jobs:
         
         - name: where are the files?
           run: |
-            psql -h localhost -d test2 -U postgres -c "SELECT * FROM databasechangelog" > src/main/resources/changelogs/databasechangelog.txt
+            psql -h localhost -d test2 -U postgres -c "SELECT * FROM databasechangelog" > ./src/main/resources/changelogs/databasechangelog1.txt
  
           env:
           # postgress password is required; alternatively, you can run:
           # `PGPASSWORD=postgres_password psql ...`
             PGPASSWORD: Kirilova%618249  
+
+        - name: Commit changes
+          uses: EndBug/add-and-commit@v9
+          with:
+            add: './src/main/resources/changelogs/*.txt'
            # - name: file
             #run: |
        # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
