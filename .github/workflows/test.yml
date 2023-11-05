@@ -16,7 +16,7 @@ jobs:
       postgres:
         
         # Docker Hub image
-        image: postgres
+        image: postgres:latest
         
         # Provide the password for postgres
         env:
