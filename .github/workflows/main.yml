@@ -34,6 +34,6 @@ jobs:
       run: docker run -d --network=host  liquibase/liquibase:latest
     - uses: docker://liquibase/liquibase:latest
       with:
-        args:  --url="jdbc:postgresql://localhost:5432/test2" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
+        args:  --url="jdbc:postgresql://postgres:5432/test2" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
         
        
