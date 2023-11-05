@@ -14,8 +14,10 @@ jobs:
     services:
       # Label used to access the service container
       postgres:
+       
         # Docker Hub image
         image: postgres
+        
         # Provide the password for postgres
         env:
           POSTGRES_USER:  ${{ secrets.USERNAME}}
@@ -30,7 +32,7 @@ jobs:
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
-        #network: host.docker.internal
+       
     
     steps:
          
@@ -50,7 +52,7 @@ jobs:
             changeLogFile: "changelog.postgree.sql"
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
-            url: "jdbc:postgresql://host.docker.internal:5432/test"
+            url: "jdbc:postgresql://postgres:5432/test"
             logLevel: INFO
             #logFile: "src/main/resources/changelogs/liquibase.txt"
             #databaseChangeLogTableName:  "src/main/resources/changelogs/database_changelog.txt"
@@ -60,13 +62,12 @@ jobs:
           #with:
             #username: ${{ secrets.USERNAME }}
             #password: ${{ secrets.PASSWORD }}
-            #url: "jdbc:postgresql://host.docker.internal:5432/test"
+            #url: "jdbc:postgresql://postgres:5432/test"
             #headless: true          
             #logLevel: INFO
         - name: where are the files?
           run: |
-           
-            ls /home/runner/work/_actions/liquibase-github-actions/update/v4.24.0/
+           SELECT * FROM test        
            # - name: file
             #run: |
        # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
