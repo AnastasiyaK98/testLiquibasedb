@@ -22,7 +22,7 @@ jobs:
         env:
           POSTGRES_USER:  ${{ secrets.USERNAME}}
           POSTGRES_PASSWORD: ${{ secrets.PASSWORD}}
-          POSTGRES_DB: test
+          POSTGRES_DB: test2
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
