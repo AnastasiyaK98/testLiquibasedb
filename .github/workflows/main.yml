@@ -1,0 +1,14 @@
+name: Liquibase_Docker
+
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  LBJobDocker:
+    runs-on: ubuntu-latest
+ 
+    steps: 
+    - uses: actions/checkout@v2
+    - name: hjj
+      run: docker run --rm --net="host" -v <PATH TO CHANGELOG DIR>:/src/main/resources/changelogs/ --defaultsFile=/src/main/resources/changelogs/liquibase.docker.properties --changeLogFile=/src/main/resources/changelogs/changelog.postgree.sql generateChangeLog
