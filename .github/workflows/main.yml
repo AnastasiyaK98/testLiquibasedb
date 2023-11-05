@@ -10,5 +10,7 @@ jobs:
  
     steps: 
     - uses: actions/checkout@v2
-    - name: hjj
-      run: docker run --rm --net="host" -v <PATH TO CHANGELOG DIR>:/src/main/resources/changelogs/ --defaultsFile=/src/main/resources/changelogs/liquibase.docker.properties --changeLogFile=/src/main/resources/changelogs/changelog.postgree.sql generateChangeLog
+    
+    - uses: docker://liquibase/liquibase:latest
+    - name: jkkk
+      run: docker run --rm --net="host" --defaultsFile=/src/main/resources/changelogs/liquibase.docker.properties --changeLogFile=/src/main/resources/changelogs/changelog.postgree.sql generateChangeLog
