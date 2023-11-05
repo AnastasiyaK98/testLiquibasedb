@@ -40,7 +40,7 @@ jobs:
         - uses: liquibase-github-actions/status@v4.24.0
           with:
             changelogFile: "src/main/resources/changelogs/changelog.postgree.sql"
-            url: "jdbc:postgresql://postgres:5432/test1"
+            url: "jdbc:postgresql://postgres:5432/test2"
             headless: true
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
@@ -52,7 +52,7 @@ jobs:
             changeLogFile: "changelog.postgree.sql"
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
-            url: "jdbc:postgresql://postgres:5432/test1"
+            url: "jdbc:postgresql://postgres:5432/test2"
             logLevel: INFO
             #logFile: "src/main/resources/changelogs/liquibase.txt"
             #databaseChangeLogTableName:  "src/main/resources/changelogs/database_changelog.txt"
@@ -68,7 +68,7 @@ jobs:
         
         - name: where are the files?
           run: |
-            psql -h localhost -d test1 -U postgres -c 'SELECT * FROM databasechangelog;'     
+            psql -h localhost -d test2 -U postgres -c 'SELECT * FROM databasechangelog;'     
           env:
           # postgress password is required; alternatively, you can run:
           # `PGPASSWORD=postgres_password psql ...`
