@@ -59,7 +59,7 @@ jobs:
           #with:
             #username: ${{ secrets.USERNAME }}
             #password: ${{ secrets.PASSWORD }}
-            #url: "jdbc:postgresql://postgres:5432/test"
+            #url: "jdbc:postgresql://host.docker.internal:5432/test"
             #headless: true          
             #logLevel: INFO
         - name: where are the files?
