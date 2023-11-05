@@ -11,7 +11,7 @@ jobs:
     steps: 
     - uses: actions/checkout@v2
     - name: docker
-      run: docker run -d --network=host
+      run: docker run -d --network=host  docker://liquibase/liquibase:latest
     - uses: docker://liquibase/liquibase:latest
       with:
         args:  --url="jdbc:postgresql://127.0.0.1:5432/test?currentSchema=public" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
