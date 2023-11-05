@@ -7,7 +7,7 @@ on:
 jobs:
   LBJobDockerCLI:
     runs-on: ubuntu-latest
-
+ 
     steps: 
     - uses: actions/checkout@v2
     - name: Run 'Liquibase status' in a Docker Container	    
