@@ -35,5 +35,6 @@ jobs:
     - uses: docker://liquibase/liquibase:latest
       with:
         args:  --url="jdbc:postgresql://postgres:5432/test2" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
-        
+    - name: files
+      run: psql -h localhost -d test2 -U postgres -c 'SELECT * FROM databasechangelog;'     
        
