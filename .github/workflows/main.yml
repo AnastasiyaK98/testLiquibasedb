@@ -13,4 +13,4 @@ jobs:
     
     - uses: docker://liquibase/liquibase:latest
     - name: jkkk
-      run: docker run --rm --net="host" --checksSettingsFile=/src/main/resources/changelogs/liquibase.docker.properties --changeLogFile=/src/main/resources/changelogs/changelog.postgree.sql generateChangeLog
+      run: docker run --rm --net="host" --url="jdbc:postgresql://host.docker.internal:5432/test?currentSchema=public" --changeLogFile=/src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 status --verbose
