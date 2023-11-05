@@ -14,7 +14,7 @@ jobs:
     services:
       # Label used to access the service container
       postgres:
-       
+        
         # Docker Hub image
         image: postgres
         
@@ -67,7 +67,11 @@ jobs:
             #logLevel: INFO
         - name: where are the files?
           run: |
-           SELECT * FROM test        
+            psql -h postgres -d test -U postgres -c 'SELECT 1;'     
+          env:
+          # postgress password is required; alternatively, you can run:
+          # `PGPASSWORD=postgres_password psql ...`
+            PGPASSWORD: Kirilova%618249  
            # - name: file
             #run: |
        # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
