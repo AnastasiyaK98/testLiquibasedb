@@ -68,7 +68,7 @@ jobs:
         
         - name: where are the files?
           run: |
-            psql -h localhost -d test2 -U postgres -c "COPY (SELECT * FROM databasechangelog) TO STDOUT (format csv, delimiter ';')"  >  ./src/main/resources/changelogs/databasechangelog.csv
+            psql -h localhost -d test2 -U postgres -c "COPY (SELECT * FROM databasechangelog) TO STDOUT (format csv, delimiter ';')"  >  './src/main/resources/changelogs/databasechangelog.csv'
  
           env:
           # postgress password is required; alternatively, you can run:
