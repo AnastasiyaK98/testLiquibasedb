@@ -7,13 +7,33 @@ on:
 jobs:
   LBJobDocker:
     runs-on: ubuntu-latest
- 
+    services:
+      # Label used to access the service container
+      postgres:
+        
+        # Docker Hub image
+        image: postgres:latest
+        
+        # Provide the password for postgres
+        env:
+          POSTGRES_USER:  ${{ secrets.USERNAME}}
+          POSTGRES_PASSWORD: ${{ secrets.PASSWORD}}
+          POSTGRES_DB: test2
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps tcp port 5432 on service container to the host
+          - 5432:5432
     steps: 
     - uses: actions/checkout@v2
     - name: docker
       run: docker run -d --network=host  liquibase/liquibase:latest
     - uses: docker://liquibase/liquibase:latest
       with:
-        args:  --url="jdbc:postgresql://localhost:5432/test" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
+        args:  --url="jdbc:postgresql://localhost:5432/test2" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 --logLevel=debug update
         
        
