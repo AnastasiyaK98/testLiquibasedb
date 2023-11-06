@@ -1,7 +1,7 @@
 const liquibase = require("./index");
 
 const config = {
-  url: "jdbc:localhost:5432/test",
+  url: "jdbc:postgresql://localhost:5432/test",
   contexts: 'DEV',
   labels: 'staging,Jira-1200',
   logLevel: 'info',
