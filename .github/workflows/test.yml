@@ -22,7 +22,7 @@ jobs:
         env:
           POSTGRES_USER:  ${{ secrets.USERNAME}}
           POSTGRES_PASSWORD: ${{ secrets.PASSWORD}}
-          POSTGRES_DB: test2
+          POSTGRES_DB: test
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -35,12 +35,33 @@ jobs:
        
     
     steps:
+
+   # Downloads a copy of the code in your repository before running CI tests
+        - name: Check out repository code
+          uses: actions/checkout@v4
+  
+        # Performs a clean installation of all dependencies in the `package.json` file
+        # For more information, see https://docs.npmjs.com/cli/ci.html
+        - name: Install dependencies
+          run: npm ci
+  
+        - name: Connect to PostgreSQL
+          # Runs a script that creates a PostgreSQL table, populates
+          # the table with data, and then retrieves the data
+          run: node client.js
+          # Environment variables used by the `client.js` script to create
+          # a new PostgreSQL table.
+          env:
+            # The hostname used to communicate with the PostgreSQL service container
+            POSTGRES_HOST: localhost
+            # The default PostgreSQL port
+            POSTGRES_PORT: 5432
          
         - uses: actions/checkout@v2
         - uses: liquibase-github-actions/status@v4.24.0
           with:
             changelogFile: "src/main/resources/changelogs/changelog.postgree.sql"
-            url: "jdbc:postgresql://postgres:5432/test2"
+            url: "jdbc:postgresql://postgres:5432/test"
             headless: true
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
@@ -52,7 +73,7 @@ jobs:
             changeLogFile: "changelog.postgree.sql"
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
-            url: "jdbc:postgresql://postgres:5432/test2"
+            url: "jdbc:postgresql://postgres:5432/test"
             logLevel: INFO
             #logFile: "src/main/resources/changelogs/liquibase.txt"
             #databaseChangeLogTableName:  "src/main/resources/changelogs/database_changelog.txt"
@@ -69,7 +90,7 @@ jobs:
        
         - name: where are the files?
           run: |
-            psql -h localhost -d test2 -U postgres -c "SELECT * FROM databasechangelog" > ./src/main/resources/changelogs/databasechangelog.txt
+            psql -h localhost -d test -U postgres -c "SELECT * FROM databasechangelog" > ./src/main/resources/changelogs/databasechangelog.txt
  
           env:
           # postgress password is required; alternatively, you can run:
