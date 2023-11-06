@@ -17,6 +17,7 @@ jobs:
           curl -L https://github.com/liquibase/liquibase/releases/download/v4.2.0/liquibase-4.2.0.zip --output liquibase-4.2.0.zip
           unzip -o -d liquibase liquibase-4.2.0.zip
           node --version
+          liquibase --version
           node NodeJS/liquibase_dev"${{ github.event.inputs.environment }}".js
     
     
@@ -26,7 +27,7 @@ jobs:
     - name: Run 'Liquibase status' in a Docker Container	    
       uses: docker://liquibase/liquibase:latest
       with:
-        args:  --url="jdbc:postgresql://http://localhost:5432/test?currentSchema=public" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 status --verbose
+        args:  --url="jdbc:postgresql://localhost:5432/test?currentSchema=public" --changeLogFile=./src/main/resources/changelogs/changelog.postgree.sql --username=postgres --password=Kirilova%618249 status --verbose
      
     - name: Run 'Liquibase update' in a Docker Container
       uses: docker://liquibase/liquibase:latest
