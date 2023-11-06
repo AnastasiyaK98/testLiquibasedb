@@ -2,6 +2,7 @@ const liquibase = require("./index");
 
 const config = {
   url: "jdbc:postgresql://localhost:5432/test",
+  driver: org.postgresql.Driver,
   contexts: 'DEV',
   labels: 'staging,Jira-1200',
   logLevel: 'info',
