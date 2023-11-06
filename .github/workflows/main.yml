@@ -2,15 +2,16 @@ name: Liquibase_Docker
 
 on:
   workflow_dispatch:
-
+    
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  
   LBJobDocker:
     runs-on: ubuntu-latest
     services:
       # Label used to access the service container
       postgres:
-        
+       
         # Docker Hub image
         image: postgres:latest
         
@@ -28,6 +29,9 @@ jobs:
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
+        
+  
+          
     steps: 
     - uses: actions/checkout@v2
     - name: docker
