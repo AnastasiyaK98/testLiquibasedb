@@ -10,7 +10,6 @@ class Liquibase {
   constructor(params = {}) {
     const defaultParams = {
       liquibase: './liquibase/liquibase',
-      driver:org.postgresql.Driver,
       changeLogFile: './src/main/resources/changelogs/changelog.postgree.sql',
       username: 'postgres',
       password: 'Kirilova%618249',
