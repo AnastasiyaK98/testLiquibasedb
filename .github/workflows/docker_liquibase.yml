@@ -18,7 +18,8 @@ jobs:
           curl -L https://github.com/liquibase/liquibase/releases/download/v4.2.0/liquibase-4.2.0.zip --output liquibase-4.2.0.zip
           unzip -o -d liquibase liquibase-4.2.0.zip
           node --version
-          liquibase --version
+          cd liquibase/
+          java -jar liquibase.jar --classpath="sqljdbc.jar" --databaseClass=liquibase.database.core.MSSQLDatabase --driver=com.microsoft.sqlserver.jdbc.SQLServerDriver --url=jdbc:sqlserver://test02:1433;databaseName=sandbox --username=sandbox_user --password=sandbox_pwd --changeLogFile=change1.xml --logLevel=INFO update
           node NodeJS/liquibase_dev"${{ github.event.inputs.environment }}".js
     
     
