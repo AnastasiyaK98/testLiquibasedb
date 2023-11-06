@@ -20,7 +20,7 @@ jobs:
           node NodeJS/liquibase_dev"${{ github.event.inputs.environment }}".js
     
     
-       run:
+      
     - name: docker
       run: export DOCKER_HOST=tcp://127.0.0.1:5432
     - name: Run 'Liquibase status' in a Docker Container	    
