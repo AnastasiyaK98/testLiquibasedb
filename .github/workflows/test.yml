@@ -58,18 +58,6 @@ jobs:
             password: ${{ secrets.PASSWORD }}
             url: "jdbc:postgresql://postgres:postgres@localhost:5432/test"
             logLevel: INFO
-            #logFile: "src/main/resources/changelogs/liquibase.txt"
-            #databaseChangeLogTableName:  "src/main/resources/changelogs/database_changelog.txt"
-            #databaseChangeLogLockTableName:  "src/main/resources/changelogs/database_changelog_lockt.txt"
-        
-        #- uses: liquibase-github-actions/generate-changelog@v4.24.0
-          #with:
-            #username: ${{ secrets.USERNAME }}
-            #password: ${{ secrets.PASSWORD }}
-            #url: "jdbc:postgresql://postgres:5432/test"
-            #headless: true          
-            #logLevel: INFO
-
        
         - name: where are the files?
           run: |
@@ -84,9 +72,6 @@ jobs:
           uses: EndBug/add-and-commit@v9
           with:
             add: './src/main/resources/changelogs/*.txt'
-           # - name: file
-            #run: |
-       # flyway info > ./migration-status/$(date -u +"%Y-%m-%d|%H:%M:%S")-${{ inputs.env }}.txt
-        
+   
             
             
