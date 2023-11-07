@@ -19,7 +19,8 @@ jobs:
           unzip -o -d liquibase liquibase-4.2.0.zip
           node --version
           cd liquibase/
-          java -jar liquibase.jar --classpath="sqljdbc.jar" --databaseClass=liquibase.database.core.MSSQLDatabase --driver=com.microsoft.sqlserver.jdbc.SQLServerDriver --url=jdbc:sqlserver://169.254.178.180:1433;databaseName=GoodsAccounting --username=sandbox_user --password=sandbox_pwd --changeLogFile=change1.xml --logLevel=INFO update
+          #java -jar liquibase.jar --classpath="sqljdbc.jar" --databaseClass=liquibase.database.core.MSSQLDatabase --driver=com.microsoft.sqlserver.jdbc.SQLServerDriver --url=jdbc:sqlserver://169.254.178.180:1433;databaseName=GoodsAccounting --username=sandbox_user --password=sandbox_pwd --changeLogFile=change1.xml --logLevel=INFO update
+          
           node NodeJS/liquibase_dev"${{ github.event.inputs.environment }}".js
     
     
