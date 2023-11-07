@@ -45,7 +45,7 @@ jobs:
         - uses: liquibase-github-actions/status@v4.24.0
           with:
             changelogFile: "src/main/resources/changelogs/changelog.postgree.sql"
-            url: "jdbc:postgresql://postgres:5432/test"
+            url: "jdbc:postgresql://postgres:postgres@localhost:5432/test"
             headless: true
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
@@ -56,7 +56,7 @@ jobs:
             changeLogFile: "src/main/resources/changelogs/changelog.postgree.sql"
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
-            url: "jdbc:postgresql://postgres:5432/test"
+            url: "jdbc:postgresql://postgres:postgres@localhost:5432/test"
             logLevel: INFO
             #logFile: "src/main/resources/changelogs/liquibase.txt"
             #databaseChangeLogTableName:  "src/main/resources/changelogs/database_changelog.txt"
