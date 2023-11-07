@@ -50,7 +50,7 @@ jobs:
             changeLogFile: "src/main/resources/changelogs/changelog.postgree.sql"
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
-            url: "jdbc:postgresql://postgresql://postgres:5432/test"
+            url: "jdbc:postgresql://postgres:5432/test"
             logLevel: INFO
        
         - name: where are the files?
