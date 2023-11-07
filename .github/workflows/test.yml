@@ -52,9 +52,8 @@ jobs:
             logLevel: INFO
         - uses: liquibase-github-actions/update@v4.24.0
           with:
-                  
-            classpath: "src/main/resources/changelogs/"
-            changeLogFile: "changelog.postgree.sql"
+                              
+            changeLogFile: "src/main/resources/changelogs/changelog.postgree.sql"
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
             url: "jdbc:postgresql://postgres:5432/test"
